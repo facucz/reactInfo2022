@@ -1,17 +1,29 @@
-function Notice() {
-    const NOTICE = {
-        title: 'Curso REACT 2022',
-        message: 'Bienvenidos al Informatorio 2022 3er etapa'
-    }
+import * as React from 'react';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+import Typography from '@mui/material/Typography';
 
-    const { title, message} = NOTICE;
 
+function Notice(props) {
     return (
-        <div>
-            <h1>{title}</h1>
-            <p>{message}</p>
-        </div>
-    );
+        <Card sx={{ maxWidth: 345 }}>
+            <CardMedia
+                component="img"
+                height="140"
+                image={props.imgUrl}
+                alt="green iguana"
+            />
+            <CardContent>
+                <Typography gutterBottom variant="h5" component="div">
+                    {props.title}
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                    {props.description}
+                </Typography>
+            </CardContent>
+        </Card>
+    )
 }
 
 export default Notice;
