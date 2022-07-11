@@ -3,6 +3,7 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
+import { CardActions, Button } from '@mui/material';
 
 
 function Notice(props) {
@@ -21,6 +22,15 @@ function Notice(props) {
                 <Typography variant="body2" color="text.secondary">
                     {props.description}
                 </Typography>
+                <Typography variant="body2" color="text.secondary">
+                    Publicado el: {props.publishedAt}
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                    Fuente: {props.source}
+                </Typography>
+                <CardActions>
+                    <Button size="small" target="_blank" href={props.urlLink}>Ir a la noticia</Button>
+                </CardActions>
             </CardContent>
         </Card>
     )
