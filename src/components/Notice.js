@@ -8,12 +8,12 @@ import { CardActions, Button } from '@mui/material';
 
 function Notice(props) {
     return (
-        <Card sx={{ maxWidth: 345 }}>
+        <Card style={{marginBottom: "20px"}} sx={{ maxWidth: 345 }}>
             <CardMedia
                 component="img"
                 height="140"
                 image={props.imgUrl}
-                alt="green iguana"
+                alt="Image not found"
             />
             <CardContent>
                 <Typography gutterBottom variant="h5" component="div">

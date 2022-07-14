@@ -2,19 +2,37 @@ import { React, useState, useEffect } from 'react';
 import Notice from './Notice';
 import LoadingSpinner from './LoadingSpinner';
 import * as newsApi from '../utils/newsApi';
+import Pages from './Pages';
 
 function NoticesList(props) {
     const [data, setData] = useState(null);
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(false);
+    const [totalResults, setTotalResults] = useState(0);
+    const [totalPages, setTotalPages] = useState(1);
+    const [currentPage, setCurrentPage] = useState(1);
+
+    const calculateTotalPages = (totalResults) => {
+        setTotalPages(Math.ceil(totalResults / 10)); 
+    }
+
+    const calculateActualNotices = (totalResults) => {
+        const defaultQuantity = 10
+        if (totalResults < defaultQuantity) {
+            return totalResults;
+        }
+        return defaultQuantity;
+    }
 
     useEffect(() => {
         if (props.input) {
             setLoading(true);
-            newsApi.getNotices(props.input, 1)
+            newsApi.getNotices(props.input, currentPage)
             .then(res => {
                 console.log('response: ', res.data);
                 setData(res.data.articles);
+                setTotalResults(res.data.totalResults);
+                calculateTotalPages(res.data.totalResults);
                 setLoading(false);
             })
             .catch(e => {
@@ -22,7 +40,7 @@ function NoticesList(props) {
                 setLoading(false);
             });
         }
-    }, [props.input]);
+    }, [props.input, currentPage]);
 
     if (loading) {
         return(
@@ -51,20 +69,34 @@ function NoticesList(props) {
         )
     }
 
+    // Change page
+    const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
+    console.log('TOTAL PAGES: ', totalPages);
+    console.log('CURRENT PAGE: ', currentPage);
     return (
-        <ul>
-            {data.map((article) => {
-                return (
-                    <Notice title={article.title} 
-                            description={article.description} 
-                            imgUrl={article.urlToImage} 
+        <>
+            <h3>Está viendo {calculateActualNotices(totalResults)} noticias de {totalResults} resultados</h3>
+            <ul>
+                {data.map((article) => {
+                    return (
+                        <Notice title={article.title}
+                            description={article.description}
+                            imgUrl={article.urlToImage}
                             publishedAt={article.publishedAt}
                             urlLink={article.url}
                             source={article.source.name}
-                    ></Notice>
-                )
-            })}
-        </ul>
+                        ></Notice>
+                    )
+                })}
+            </ul>
+            <Pages
+                totalPages={totalPages}
+                paginate={paginate}
+                page={currentPage}
+            >
+            </Pages>
+        </>
     )
 }
 
