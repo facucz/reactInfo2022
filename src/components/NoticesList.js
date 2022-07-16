@@ -3,6 +3,7 @@ import Notice from './Notice';
 import LoadingSpinner from './LoadingSpinner';
 import * as newsApi from '../utils/newsApi';
 import Pages from './Pages';
+import Footer from './Footer';
 
 function NoticesList(props) {
     const [data, setData] = useState(null);
@@ -59,11 +60,13 @@ function NoticesList(props) {
 
     if (!data) {
         return(
-            <h2>Ingrese la noticia que desea buscar</h2>
+            <>
+                <h2>Ingrese la noticia que desea buscar</h2>
+            </>
         )
     }
 
-    if (data.articles > 0) {
+    if (data <= 0) {
         return(
             <h2>No se encontraron noticias relacionadas al texto que se busco: {props.input}</h2>
         )
@@ -72,8 +75,9 @@ function NoticesList(props) {
     // Change page
     const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
-    console.log('TOTAL PAGES: ', totalPages);
-    console.log('CURRENT PAGE: ', currentPage);
+    // Remove Landing Page footer to avoid footer duplication
+    props.setLandingPageFooterDisplayFalse();
+
     return (
         <>
             <h3>Está viendo {calculateActualNotices(totalResults)} noticias de {totalResults} resultados</h3>
@@ -95,7 +99,8 @@ function NoticesList(props) {
                         ></Notice>
                     )
                 })}
-            </ul> 
+            </ul>
+            <Footer></Footer> 
         </>
     )
 }

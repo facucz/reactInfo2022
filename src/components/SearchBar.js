@@ -4,7 +4,7 @@ import Button from '@mui/material/Button';
 import NoticesList from "./NoticesList";
 import '../styles/searchBar.css';
 
-function SearchBar() {
+function SearchBar(props) {
     const [inputText, setInputText] = useState("");
     const [isSearchDisable, setIsSearchDisable] = useState(true);
     const [query, setQuery] = useState("");
@@ -42,7 +42,7 @@ function SearchBar() {
                 onClick={clickHandler}
                 >Buscar
             </Button>
-            <NoticesList input={query} />
+            <NoticesList input={query} setLandingPageFooterDisplayFalse={props.setLandingPageFooterDisplayFalse} />
         </div>
     )
 }

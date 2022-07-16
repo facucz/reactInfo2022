@@ -2,8 +2,7 @@ import React from 'react';
 
 function Footer() {
     return(
-        <div>
-            <footer className='text-white py-4 bg-dark'>
+            <footer className='text-white py-4 bg-dark' style={{width:'100%', marginTop:'auto'}}>
                 <div className='container'>
                     <nav className='row justify-content-center'>
                         <ul className='col-12 col-md-3 list-unstyled'>
@@ -24,7 +23,6 @@ function Footer() {
                     </nav>
                 </div>
             </footer>
-        </div>
     )
 }
 
