@@ -77,6 +77,12 @@ function NoticesList(props) {
     return (
         <>
             <h3>Está viendo {calculateActualNotices(totalResults)} noticias de {totalResults} resultados</h3>
+            <Pages
+                totalPages={totalPages}
+                paginate={paginate}
+                page={currentPage}
+            >
+            </Pages>
             <ul>
                 {data.map((article) => {
                     return (
@@ -89,13 +95,7 @@ function NoticesList(props) {
                         ></Notice>
                     )
                 })}
-            </ul>
-            <Pages
-                totalPages={totalPages}
-                paginate={paginate}
-                page={currentPage}
-            >
-            </Pages>
+            </ul> 
         </>
     )
 }
