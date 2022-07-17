@@ -1,3 +1,6 @@
+[![cypress component tests on chrome CI](https://github.com/facucz/reactInfo2022/actions/workflows/node.js.yml/badge.svg)](https://github.com/facucz/reactInfo2022/actions/workflows/node.js.yml)
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
