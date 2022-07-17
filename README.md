@@ -14,6 +14,14 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
 
+### `npm cypress-test:ci-component-chrome`
+
+Run all component tests in headless mode against chrome browser.\
+
+### `npm cypress-test:open-component`
+
+Opens the Cypress App to run the component tests.\
+
 ### `npm test`
 
 Launches the test runner in the interactive watch mode.\
