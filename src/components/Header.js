@@ -8,6 +8,7 @@ function Header() {
                 <Container>
                     <Navbar.Brand>
                         <img
+                            id='img-header-notices-explorer'
                             alt=""
                             src={image}
                             width="30"

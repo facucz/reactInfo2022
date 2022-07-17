@@ -25,8 +25,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "cypress:open-component": "cypress open --component",
-    "cypress:ci-component": "cypress run --component"
+    "cypress-test:open-component": "cypress open --component",
+    "cypress-test:ci-component-chrome": "cypress run --component --browser chrome"
   },
   "eslintConfig": {
     "extends": [

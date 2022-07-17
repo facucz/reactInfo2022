@@ -1,5 +1,5 @@
 import React from 'react';
-import { mount, unmount } from 'cypress/react';
+import { mount } from 'cypress/react';
 import Footer from '../../src/components/Footer';
 
 describe('Footer component test', () => {

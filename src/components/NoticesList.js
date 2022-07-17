@@ -90,7 +90,8 @@ function NoticesList(props) {
             <ul>
                 {data.map((article) => {
                     return (
-                        <Notice title={article.title}
+                        <Notice 
+                            title={article.title}
                             description={article.description}
                             imgUrl={article.urlToImage}
                             publishedAt={article.publishedAt}
