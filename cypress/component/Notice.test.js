@@ -1,6 +1,7 @@
 import React from 'react';
 import { mount } from 'cypress/react';
 import Notice from '../../src/components/Notice';
+import * as dateUtils from '../../src/utils/dateUtils';
 
 describe('Notice component test', () => {
     const mockProps = {
@@ -41,7 +42,7 @@ describe('Notice component test', () => {
     });
 
     it('should Notice published at be visible and contains the correct value', () => {
-        cy.contains(`Publicado el: ${mockProps.publishiedAt}`)
+        cy.contains(`Publicado el: ${dateUtils.getCustomDate(mockProps.publishiedAt)}`)
             .should('be.visible');
     });
 

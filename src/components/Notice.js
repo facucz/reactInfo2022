@@ -4,6 +4,7 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { CardActions, Button } from '@mui/material';
+import * as dateUtils from '../utils/dateUtils';
 
 
 function Notice(props) {
@@ -23,7 +24,7 @@ function Notice(props) {
                     {props.description}
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
-                    Publicado el: {props.publishedAt}
+                    Publicado el: {dateUtils.getCustomDate(props.publishedAt)}
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
                     Fuente: {props.source}
